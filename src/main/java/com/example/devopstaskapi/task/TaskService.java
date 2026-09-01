@@ -12,11 +12,7 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final Clock clock;
 
-    public TaskService(TaskRepository taskRepository) {
-        this(taskRepository, Clock.systemUTC());
-    }
-
-    TaskService(TaskRepository taskRepository, Clock clock) {
+    public TaskService(TaskRepository taskRepository, Clock clock) {
         this.taskRepository = taskRepository;
         this.clock = clock;
     }
