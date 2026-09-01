@@ -1,0 +1,18 @@
+services:
+  api:
+    image: ${IMAGE_NAME:-devops-task-api}:${IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_URL: jdbc:h2:file:/data/tasksdb;DB_CLOSE_ON_EXIT=FALSE
+      DB_USERNAME: ${DB_USERNAME:-sa}
+      DB_PASSWORD: ${DB_PASSWORD:-}
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    volumes:
+      - task-data:/data
+    restart: unless-stopped
+
+volumes:
+  task-data:
